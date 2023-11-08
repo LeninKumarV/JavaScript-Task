@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Task</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inspiration&family=Poppins:wght@300;400&display=swap');
+      </style>
+    <style>
+        *{
+            padding: 0%;
+            margin: 0%;
+            box-sizing: border-box;
+            font-family: 'Inspiration', cursive;
+            font-family: 'Poppins', sans-serif;
+        }
+        img{
+            width: 50px;
+            height: 50px;
+            background: none;
+        }
+        .login{
+            width: 350px;
+            height:450px;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items:center;
+            flex-direction: column;
+            row-gap: 40px;
+            border-radius: 10px;
+        }
+        body{
+            width: 100%;
+            height: 100vh;
+            background-color: rgb(162, 212, 253);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+       .login h1{
+            font-weight: bolder;   
+        }
+        p{
+            font-size: 13px;
+        }
+        p a{
+            text-decoration: none;
+            color: crimson;
+        }
+        input{
+            border: none;
+            outline: none;
+            background-color: transparent;
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+            border-bottom-color: black;
+        }
+      
+        input::placeholder{
+            color: black;
+        }
+        input:hover::placeholder{
+            transform: translateX(15px);
+        }
+        input:focus::placeholder{
+            transform: none;
+        }
+        button{
+        background: rgb(238,174,202);
+        background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(159,228,226,1) 100%);
+        border: none;
+        outline: none;
+        padding: 10px 50px;
+        color: white;
+        border-radius: 5px;    
+        transition: all 0.5s linear;    
+        }
+        button:hover{
+        background: rgb(238,174,202);
+        background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(20,235,229,1) 100%);
+        cursor: pointer;
+        }
+        .error{
+            font-size: 12px;
+            color: crimson;
+        }
+        .input1.error input{
+            border-bottom-color:red ;
+        }
+        .input1.success input{
+            border-bottom-color:green ;
+        }
+        button a{
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!--lgin form-->
+    <div class="login">
+        <h1>Welcome</h1>
+        <img src="letter-a.png" alt="Logo">
+        <div class="input1">
+            <input type="email" name="username" id="name" placeholder="Email" >
+            <div class="error"></div>
+        </div>
+        <div class="input1">
+            <input type="password" name="password" id="password" placeholder="Password">
+            <div class="error"></div>
+        </div>
+        <button id="btn">Login</button>
+        <p>Don't have an account? <a href="FormValidation.html">sign up</a></p>
+    </div>
+    <!--js page-->
+    <script>
+    
+        var username=document.querySelector("#name");
+        var userpassword=document.querySelector("#password");
+        var button=document.querySelector("#btn");
+        //var parentele=username.parentElement;
+     //   console.log(parentele)
+        
+        button.addEventListener("click",function(event){
+            event.preventDefault();
+           // Validate();
+          if (Validate(true)) {
+            console.log("finsihjjjj");  
+            
+          }
+         
+          else{
+            console.log("finsih");
+            
+        }
+            
+        })
+
+        function Validate(){
+            var valuseranme=username.value.trim();
+            var valpasssword=userpassword.value.trim();
+
+            
+            if(valuseranme===""){
+                setInputError(username,"Please enter your email");
+                console.log("hb")
+            }
+            else{
+                setInputSuccess(username);
+            }
+
+            if(valpasssword===""){
+                setInputError(userpassword,"Please enter your password");
+                console.log("hb")
+            }
+            else if(valpasssword.length<8 ){
+                setInputError(userpassword,"Enter above 8 characters")
+            }
+            else{
+                setInputSuccess(userpassword);
+            }
+           
+            if(valuseranme.length>=1 && valpasssword.length>=8){
+                window.location.href="JS-day5.html";
+            }
+                
+            
+            
+        }
+
+        function setInputError(element,message) {
+            var parentele=element.parentElement;
+            var newElement=parentele.querySelector(".error");
+            var addElement=newElement.innerText=message;
+         
+
+        }
+
+        function setInputSuccess(element) {
+            var parentele=element.parentElement;
+            var newElement=parentele.querySelector(".error");
+            var setText=newElement.innerText="";
+            
+          
+
+        }
+      //  function run(){
+        //    window.location.href="./FormValidation.html";
+        //}
+    </script>
+
+    <script>
+       
+    </script>
+</body>
+</html>

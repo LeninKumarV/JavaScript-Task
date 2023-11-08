@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to-do list</title>
+    <style>
+        *{
+            padding: 0%;
+            margin: 0%;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: gainsboro;
+            width: 100%;
+            height: 100vh;
+        }
+        .todo{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        #add{
+        background: rgb(238,174,202);
+        background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(159,228,226,1) 100%);
+        border: none;
+        outline: none;
+        padding: 10px 20px;
+        color: white;
+        border-radius: 5px;    
+        transition: all 0.5s linear;    
+        }
+        #add:hover{
+        background: rgb(238,174,202);
+        background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(20,235,229,1) 100%);
+        cursor: pointer;
+        }
+        input{
+            border: none;
+            outline: none;
+            background-color: white;
+           padding: 10px 20px;
+        }
+        input::placeholder {
+            color: black;
+        }
+        #container li{
+            background-color: rgb(253, 224, 229);
+            padding: 20px 40px;
+            list-style-type: none;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        #del{
+            padding: 10px;
+            background-color: black;
+            border: none;
+            outline: none;
+            border: 1px solid black;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="todo">
+    <h1>TO-DO List</h1>
+    <br>
+    <input type="text" id="inp" placeholder="Enter here some....">
+    <br>
+    <button id="add" onclick="insert()">Add</button>
+    <br>
+    <ul id="container">
+        <li>
+            Enter Your Thoughts...
+            <button id="del" onclick="deleteitem(event)">Delete</button>
+        </li>
+    </ul>
+</div>
+    <!--javascript-->
+    <script>
+        var input=document.querySelector("#inp");
+        var adding=document.querySelector("#add");
+        var deleting=document.querySelector("#del");
+
+        function insert() {
+           var ulist=document.querySelector("#container");
+           var list=document.createElement("li");
+           var regular=input.value;
+           list.innerHTML=regular+"  <button id='del' onclick='deleteitem(event)'>Delete</button>";
+           console.log(ulist.append(list));
+           
+        }
+
+        function deleteitem() {
+            var list=document.getElementsByTagName("li");
+            event.target.parentElement.remove();
+            console.log(event)
+        }
+        
+    </script>
+</body>
+</html>
